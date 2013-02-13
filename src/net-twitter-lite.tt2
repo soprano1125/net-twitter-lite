@@ -20,10 +20,10 @@ sub new {
 
     my $netrc = delete $args{netrc};
     my $new = bless {
-        apiurl                => 'http://api.twitter.com/1',
-        searchapiurl          => 'http://search.twitter.com',
-        search_trends_api_url => 'http://api.twitter.com/1',
-        lists_api_url         => 'http://api.twitter.com/1',
+        apiurl                => 'http://api.twitter.com/1.1',
+        searchapiurl          => 'http://api.twitter.com/1.1/search',
+        search_trends_api_url => 'http://api.twitter.com/1.1',
+        lists_api_url         => 'http://api.twitter.com/1.1',
         apirealm   => 'Twitter API',
         $args{identica} ? ( apiurl => 'http://identi.ca/api' ) : (),
         useragent  => __PACKAGE__ . "/$VERSION (Perl)",
@@ -404,7 +404,7 @@ sub _mk_post_msg {
 { ### scope $api_def
 
 my $api_def = [
-[% FOREACH api IN [ [ 'Lists', '^legacy_' ], [ 'REST' ], [ 'Search' ] ] -%]
+[% FOREACH api IN [ [ 'Lists', '^legacy_' ], [ 'RESTv1_1' ] ] -%]
     [ [% api.0 %] => [
 [% FOREACH method IN get_methods_for(api.0, api.1) -%]
         [ '[% method.name %]', {
