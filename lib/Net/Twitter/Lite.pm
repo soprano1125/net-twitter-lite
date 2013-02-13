@@ -20,10 +20,11 @@ sub new {
 
     my $netrc = delete $args{netrc};
     my $new = bless {
-        apiurl                => 'http://api.twitter.com/1.1',
-        searchapiurl          => 'http://api.twitter.com/1.1/search',
-        search_trends_api_url => 'http://api.twitter.com/1.1',
-        lists_api_url         => 'http://api.twitter.com/1.1',
+        apiurl                => 'https://api.twitter.com/1.1',
+        searchapiurl          => 'https://api.twitter.com/1.1',
+        search_trends_api_url => 'https://api.twitter.com/1.1',
+        lists_api_url         => 'https://api.twitter.com/1.1',
+        uploadapiurl          => 'https://api.twitter.com/1.1',
         apirealm   => 'Twitter API',
         $args{identica} ? ( apiurl => 'http://identi.ca/api' ) : (),
         useragent  => __PACKAGE__ . "/$VERSION (Perl)",
@@ -34,11 +35,11 @@ sub new {
         useragent_class => 'LWP::UserAgent',
         useragent_args  => {},
         oauth_urls => {
-            request_token_url  => "https://twitter.com/oauth/request_token",
-            authentication_url => "https://twitter.com/oauth/authenticate",
-            authorization_url  => "https://twitter.com/oauth/authorize",
-            access_token_url   => "https://twitter.com/oauth/access_token",
-            xauth_url          => "https://twitter.com/oauth/access_token",
+            request_token_url  => "https://api.twitter.com/oauth/request_token",
+            authentication_url => "https://api.twitter.com/oauth/authenticate",
+            authorization_url  => "https://api.twitter.com/oauth/authorize",
+            access_token_url   => "https://api.twitter.com/oauth/access_token",
+            xauth_url          => "https://api.twitter.com/oauth/access_token",
         },
         netrc_machine => 'api.twitter.com',
         %args
