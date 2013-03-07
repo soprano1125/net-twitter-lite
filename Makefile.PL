@@ -2,20 +2,6 @@ use inc::Module::Install;
 
 version '0.11002';
 
-if ( $Module::Install::AUTHOR ) {
-    eval "use Net::Twitter::Core";
-    die $@ if $@;
-
-    my $perl5_lib =  join ':', @INC;
-    my @libs = map "-I$_", @INC;
-
-    system($^X, @libs, "src/build.pl",
-           version, 'src/net-twitter-lite.tt2', 'lib/Net/Twitter/Lite.pm')
-        == 0 || die "src/bulid.pl failed: $?";
-
-    system 'pod2text lib/Net/Twitter/Lite.pm > README';
-}
-
 name        'Net-Twitter-Lite';
 all_from    'lib/Net/Twitter/Lite.pm';
 
