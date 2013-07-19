@@ -1476,15 +1476,20 @@ my $api_def = [
             booleans        => [ qw// ],
             base_url_method => 'apiurl',
         } ],
+# updated by soprano 2013/07/19
+#         mod 'search' because authentication required.
         [ 'search', {
             aliases         => [ qw// ],
-            path            => 'search/tweets',
+#           path            => 'search/tweets',
+            path            => 'search',
             method          => 'GET',
-            params          => [ qw/q count callback lang locale rpp since_id max_id until geocode result_type include_entities/ ],
+#           params          => [ qw/q count callback lang locale rpp since_id max_id until geocode result_type include_entities/ ],
+            params          => [ qw/q callback lang locale rpp page since_id until    geocode show_user result_type/ ],
             required        => [ qw/q/ ],
             add_source      => 0,
             deprecated      => 0,
-            authenticate    => 1,
+#           authenticate    => 1,
+            authenticate    => 0,
             booleans        => [ qw/include_entities/ ],
             base_url_method => 'apiurl',
         } ],
