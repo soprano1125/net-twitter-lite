@@ -1874,7 +1874,10 @@ my $api_def = [
         } ],
         [ 'user_suggestions', {
             aliases         => [ qw/follow_suggestions/ ],
-            path            => 'users/suggestions/:category/members',
+# updated by soprano 2013/07/19
+#         mod path from Net::Twitter::Lite v0.12004
+#           path            => 'users/suggestions/:category/members',
+            path            => 'users/suggestions/:slug',
             method          => 'GET',
             params          => [ qw/category lang/ ],
             required        => [ qw/category/ ],
@@ -1884,18 +1887,20 @@ my $api_def = [
             booleans        => [ qw// ],
             base_url_method => 'apiurl',
         } ],
-        [ 'user_suggestions_for', {
-            aliases         => [ qw/follow_suggestions/ ],
-            path            => 'users/suggestions/:category',
-            method          => 'GET',
-            params          => [ qw/category lang/ ],
-            required        => [ qw/category/ ],
-            add_source      => 0,
-            deprecated      => 0,
-            authenticate    => 1,
-            booleans        => [ qw// ],
-            base_url_method => 'apiurl',
-        } ],
+# updated by soprano 2013/07/19
+#         delete 'user_suggestions_for' because not found "user_suggestions_for".
+#       [ 'user_suggestions_for', {
+#           aliases         => [ qw/follow_suggestions/ ],
+#           path            => 'users/suggestions/:category',
+#           method          => 'GET',
+#           params          => [ qw/category lang/ ],
+#           required        => [ qw/category/ ],
+#           add_source      => 0,
+#           deprecated      => 0,
+#           authenticate    => 1,
+#           booleans        => [ qw// ],
+#           base_url_method => 'apiurl',
+#       } ],
         [ 'user_timeline', {
             aliases         => [ qw// ],
             path            => 'statuses/user_timeline',
